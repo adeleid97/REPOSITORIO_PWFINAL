@@ -1,0 +1,29 @@
+<apex:page StandardController="Quote" extensions="CustomWebInventoryController">
+    <apex:pageBlock title="Implementación de Visualforce">
+       <apex:pageBlock title="Bienvenido {!$User.FirstName} {!$User.LastName}">
+           <apex:form >
+           
+               <apex:outputLabel value="Ingresa el código del producto: "/>
+               <apex:inputText value="{!codigo}"/>
+               <apex:commandButton value="Buscar" action="{!buscar}"/>
+               <br/><br/>
+               
+               <apex:pageBlock title="Productos">
+               		<apex:pageBlockTable value="{!Lista_nueva}" var="inv">
+                        <apex:column value="{!inv.Product2.Name}"/>
+                        <apex:column value="{!inv.UnitPrice}"/>
+                        <apex:column value="{!inv.Product2.ExternalId}"/>
+                        <apex:column ><apex:inputField value="{!inv.Reservados__c}"/></apex:column>                        
+                        <apex:column value="{!inv.Disponibles__c}"/> 
+                   	</apex:pageBlockTable>
+               </apex:pageBlock>
+			   <apex:pageBlock title="Opciones a seleccionar">
+               			<apex:commandButton value="Cancelar" action="{!cancelar}"/>
+               			<apex:commandButton value="Atras" action="{!atras}"/>
+                   		<apex:commandButton value="Guardar" action="{!guardar}"/>
+               
+               </apex:pageBlock>
+           </apex:form>
+       </apex:pageBlock>
+    </apex:pageBlock>
+</apex:page>
